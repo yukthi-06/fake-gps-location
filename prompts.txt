@@ -24,10 +24,11 @@ more prompts
 	Load all of these files into a dropdown on the main screen.
 	The user then selects one GPX file from the dropdown, and then clicks start button.
 	The app then reads that GPX file and uses those locations as mock GPS at configured intervals
+	create GPX folder at startup , if it doesnt exist
 
 *   Do not give me powershell commands to run.  Only give me windows CMD commands to run
 *   In Developer options, when I want to set my app as Mock LocationApp, my app is not available in the list
-
+*	
 
 
 

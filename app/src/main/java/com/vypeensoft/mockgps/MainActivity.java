@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button btnStart, btnStop;
 
     private List<File> gpxFiles = new ArrayList<>();
-    private final String TARGET_FOLDER = Environment.getExternalStorageDirectory() + "/Mock_GPS_Locations";
+    private final String TARGET_FOLDER = Environment.getExternalStorageDirectory() + "/Vypeensoft/Mock_GPS_Locations/GPX";
 
     private final BroadcastReceiver locationReceiver = new BroadcastReceiver() {
         @Override
@@ -111,6 +111,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
+        // Create sibling folders for Logs and History if they don't exist
+        File parentFolder = folder.getParentFile();
+        if (parentFolder != null) {
+            new File(parentFolder, "Logs").mkdirs();
+            new File(parentFolder, "History").mkdirs();
+        }
+
         File[] files = folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".gpx"));
         gpxFiles.clear();
         List<String> fileNames = new ArrayList<>();
@@ -129,6 +136,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (fileNames.isEmpty()) {
             Toast.makeText(this, "No GPX files found in " + TARGET_FOLDER, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 103) { // Storage permission
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                scanGpxFolder();
+            }
         }
     }
 
@@ -257,6 +274,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             registerReceiver(locationReceiver, new IntentFilter(MockLocationService.BROADCAST_UPDATE));
         }
+        scanGpxFolder();
     }
 
     @Override
