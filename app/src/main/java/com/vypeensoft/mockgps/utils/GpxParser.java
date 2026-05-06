@@ -1,8 +1,8 @@
-package com.vypeensoft.fakegps.utils;
+package com.vypeensoft.mockgps.utils;
 
 import android.util.Xml;
 
-import com.vypeensoft.fakegps.model.LocationPoint;
+import com.vypeensoft.mockgps.model.LocationPoint;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.FakeGps" parent="Theme.Material3.DayNight">
+    <style name="Theme.MockGps" parent="Theme.Material3.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#2196F3</item>
         <item name="colorOnPrimary">#FFFFFF</item>
@@ -12,12 +12,12 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.FakeGps.NoActionBar">
+    <style name="Theme.MockGps.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.FakeGps.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MockGps.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.FakeGps.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.MockGps.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

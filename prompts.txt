@@ -1,10 +1,10 @@
-create an android application which is basically a fake GPS generator
-The app name is "Fake GPS Location Generator"
+create an android application which is basically a mock GPS generator
+The app name is "Mock GPS Location Generator"
 On application start It should read a GPX file from the file system and load to memory
 It should then set the device GPS co-ordinates the values read from the GPX file.
 the GPS values should be separated by a time duration like .. every 5 seconds, or 10 seconds.
 This time duration is configurable from the settings page.
-Also have two button on the screen, which is used to Start and Stop the fake GPS generation.
+Also have two button on the screen, which is used to Start and Stop the mock GPS generation.
 
 develop the app in java (not kotlin)
 Need a left side menu with items like "Settings", "Help", "About".
@@ -20,10 +20,10 @@ Give me as a single prompt to give to an agent to achieve this
 more prompts
 *   This app needs to be set as "Mock Location App" in the developer options
 
-*	the GPX file which is loaded , should be picked from a folder like "/sdcard/Fake_GPS_Locations".  Inside this folder a list of GPX files are expected.
+*	the GPX file which is loaded , should be picked from a folder like "/sdcard/Mock_GPS_Locations".  Inside this folder a list of GPX files are expected.
 	Load all of these files into a dropdown on the main screen.
 	The user then selects one GPX file from the dropdown, and then clicks start button.
-	The app then reads that GPX file and uses those locations as fake GPS at configured intervals
+	The app then reads that GPX file and uses those locations as mock GPS at configured intervals
 
 *   Do not give me powershell commands to run.  Only give me windows CMD commands to run
 *   In Developer options, when I want to set my app as Mock LocationApp, my app is not available in the list
@@ -46,7 +46,7 @@ Build a complete Android application in **Java (not Kotlin)** with the following
 
 ## **App Overview**
 
-* App name: **"Fake GPS Location Generator"**
+* App name: **"Mock GPS Location Generator"**
 * The app simulates GPS movement using coordinates read from a GPX file.
 * On application startup:
 
@@ -71,7 +71,7 @@ Build a complete Android application in **Java (not Kotlin)** with the following
 
 ---
 
-### 2. Fake GPS Simulation
+### 2. Mock GPS Simulation
 
 * Use Android mock location APIs (`LocationManager` with mock provider)
 * Sequentially feed coordinates from GPX list
@@ -114,7 +114,7 @@ Build a complete Android application in **Java (not Kotlin)** with the following
 * Implement simulation using a **Foreground Service**
 * Show persistent notification:
 
-  * "Fake GPS Running"
+  * "Mock GPS Running"
 * Ensure updates continue when app is in background
 
 ---

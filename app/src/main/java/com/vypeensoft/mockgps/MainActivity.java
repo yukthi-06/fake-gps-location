@@ -1,4 +1,4 @@
-package com.vypeensoft.fakegps;
+package com.vypeensoft.mockgps;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -29,14 +29,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.vypeensoft.fakegps.model.LocationPoint;
-import com.vypeensoft.fakegps.service.MockLocationService;
+import com.vypeensoft.mockgps.model.LocationPoint;
+import com.vypeensoft.mockgps.service.MockLocationService;
 import android.os.Environment;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-import com.vypeensoft.fakegps.utils.GpxParser;
+import com.vypeensoft.mockgps.utils.GpxParser;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button btnStart, btnStop;
 
     private List<File> gpxFiles = new ArrayList<>();
-    private final String TARGET_FOLDER = Environment.getExternalStorageDirectory() + "/Fake_GPS_Locations";
+    private final String TARGET_FOLDER = Environment.getExternalStorageDirectory() + "/Mock_GPS_Locations";
 
     private final BroadcastReceiver locationReceiver = new BroadcastReceiver() {
         @Override

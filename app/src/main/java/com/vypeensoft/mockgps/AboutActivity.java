@@ -1,4 +1,4 @@
-package com.vypeensoft.fakegps;
+package com.vypeensoft.mockgps;
 
 import android.os.Bundle;
 import android.widget.TextView;

@@ -1,4 +1,4 @@
-package com.vypeensoft.fakegps.model;
+package com.vypeensoft.mockgps.model;
 
 import java.io.Serializable;
 

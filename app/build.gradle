@@ -7,7 +7,7 @@ def gitShaFull = 'git rev-parse         HEAD'.execute().text.trim()
 def gitTag     = 'git describe        --tags'.execute().text.trim()
 
 android {
-    namespace 'com.vypeensoft.fakegps'
+    namespace 'com.vypeensoft.mockgps'
     compileSdk 34
 
     buildFeatures {
@@ -15,7 +15,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.vypeensoft.fakegps"
+        applicationId "com.vypeensoft.mockgps"
         minSdk 29          // Android 10.0 (Q) — MediaStore.Files used for storage
         targetSdk 34
         versionCode 1
@@ -24,7 +24,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // Inject Git info into BuildConfig
-        buildConfigField "String", "BUILD_TIMESTAMP", "\"${new Date().format('yyyyMMdd.HHmmss')}\""
+        //buildConfigField "String", "BUILD_TIMESTAMP", "\"${new Date().format('yyyyMMdd.HHmmss')}\""
+        buildConfigField "String", "BUILD_TIMESTAMP", "\"${new Date().format('yyyyMMdd.HHmmss', TimeZone.getTimeZone('Asia/Kolkata'))}\""
         buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
         buildConfigField "String", "GIT_SHA_FULL", "\"${gitShaFull}\""
         buildConfigField "String", "GIT_TAG", "\"${gitTag}\""		

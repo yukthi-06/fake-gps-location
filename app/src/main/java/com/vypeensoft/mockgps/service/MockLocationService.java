@@ -1,4 +1,4 @@
-package com.vypeensoft.fakegps.service;
+package com.vypeensoft.mockgps.service;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -19,8 +19,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import com.vypeensoft.fakegps.MainActivity;
-import com.vypeensoft.fakegps.model.LocationPoint;
+import com.vypeensoft.mockgps.MainActivity;
+import com.vypeensoft.mockgps.model.LocationPoint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class MockLocationService extends Service {
     public static final String EXTRA_POINTS = "EXTRA_POINTS";
     public static final String EXTRA_INTERVAL = "EXTRA_INTERVAL";
     
-    public static final String BROADCAST_UPDATE = "com.vypeensoft.fakegps.LOCATION_UPDATE";
+    public static final String BROADCAST_UPDATE = "com.vypeensoft.mockgps.LOCATION_UPDATE";
     public static final String EXTRA_LAT = "lat";
     public static final String EXTRA_LON = "lon";
     public static final String EXTRA_TIME = "time";
@@ -160,7 +160,7 @@ public class MockLocationService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
                     CHANNEL_ID,
-                    "Fake GPS Simulation Channel",
+                    "Mock GPS Simulation Channel",
                     NotificationManager.IMPORTANCE_LOW
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
@@ -176,7 +176,7 @@ public class MockLocationService extends Service {
                 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
 
         return new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Fake GPS Running")
+                .setContentTitle("Mock GPS Running")
                 .setContentText("Simulating location movement...")
                 .setSmallIcon(android.R.drawable.ic_menu_mylocation)
                 .setContentIntent(pendingIntent)
