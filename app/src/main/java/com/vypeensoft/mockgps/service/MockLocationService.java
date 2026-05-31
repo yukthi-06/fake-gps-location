@@ -57,6 +57,9 @@ public class MockLocationService extends Service {
             broadcastUpdate(point);
 
             currentIndex = (currentIndex + 1) % points.size(); // Looping
+            if (currentIndex == 0) {
+                Log.d(TAG, "GPX points exhausted. Looping simulation back to the beginning.");
+            }
             handler.postDelayed(this, intervalSeconds * 1000L);
         }
     };
