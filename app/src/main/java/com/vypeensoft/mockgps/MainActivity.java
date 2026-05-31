@@ -92,6 +92,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnStart = findViewById(R.id.btn_start);
         btnStop = findViewById(R.id.btn_stop);
 
+        spinnerGpx.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(android.widget.AdapterView<?> parent, View view, int position, long id) {
+                if (position >= 0 && position < gpxFiles.size()) {
+                    String selectedGpx = gpxFiles.get(position).getName();
+                    getSharedPreferences("prefs", MODE_PRIVATE).edit().putString("last_selected_gpx", selectedGpx).apply();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(android.widget.AdapterView<?> parent) {
+            }
+        });
+
         btnRefresh.setOnClickListener(v -> scanGpxFolder());
         btnStart.setOnClickListener(v -> startSimulation());
         btnStop.setOnClickListener(v -> stopSimulation());
@@ -133,6 +147,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.layout.spinner_item, fileNames);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinnerGpx.setAdapter(adapter);
+
+        String savedGpx = getSharedPreferences("prefs", MODE_PRIVATE).getString("last_selected_gpx", null);
+        if (savedGpx != null) {
+            int index = fileNames.indexOf(savedGpx);
+            if (index >= 0) {
+                spinnerGpx.setSelection(index);
+            }
+        }
 
         if (fileNames.isEmpty()) {
             Toast.makeText(this, "No GPX files found in " + TARGET_FOLDER, Toast.LENGTH_LONG).show();
@@ -274,6 +296,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             registerReceiver(locationReceiver, new IntentFilter(MockLocationService.BROADCAST_UPDATE));
         }
+        boolean running = MockLocationService.isServiceRunning();
+        updateUiState(running);
         scanGpxFolder();
     }
 

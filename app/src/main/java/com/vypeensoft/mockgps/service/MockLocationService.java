@@ -46,6 +46,11 @@ public class MockLocationService extends Service {
     private int currentIndex = 0;
     private int intervalSeconds = 5;
     private boolean isRunning = false;
+    private static boolean isServiceRunning = false;
+
+    public static boolean isServiceRunning() {
+        return isServiceRunning;
+    }
 
     private final Runnable simulationRunnable = new Runnable() {
         @Override
@@ -95,6 +100,7 @@ public class MockLocationService extends Service {
         this.intervalSeconds = intent.getIntExtra(EXTRA_INTERVAL, 5);
         this.currentIndex = 0;
         this.isRunning = true;
+        isServiceRunning = true;
 
         startForeground(NOTIF_ID, createNotification());
         setupTestProvider();
@@ -104,6 +110,7 @@ public class MockLocationService extends Service {
 
     private void stopSimulation() {
         isRunning = false;
+        isServiceRunning = false;
         handler.removeCallbacks(simulationRunnable);
         removeTestProvider();
         stopForeground(true);
