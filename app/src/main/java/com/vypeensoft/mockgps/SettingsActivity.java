@@ -15,13 +15,17 @@ public class SettingsActivity extends AppCompatActivity {
         RadioGroup rgInterval = findViewById(R.id.rg_interval);
         int currentInterval = getSharedPreferences("prefs", MODE_PRIVATE).getInt("interval", 5);
 
-        if (currentInterval == 5) ((RadioButton) findViewById(R.id.rb_5s)).setChecked(true);
+        if (currentInterval == 1) ((RadioButton) findViewById(R.id.rb_1s)).setChecked(true);
+        else if (currentInterval == 2) ((RadioButton) findViewById(R.id.rb_2s)).setChecked(true);
+        else if (currentInterval == 5) ((RadioButton) findViewById(R.id.rb_5s)).setChecked(true);
         else if (currentInterval == 10) ((RadioButton) findViewById(R.id.rb_10s)).setChecked(true);
         else if (currentInterval == 15) ((RadioButton) findViewById(R.id.rb_15s)).setChecked(true);
 
         rgInterval.setOnCheckedChangeListener((group, checkedId) -> {
             int interval = 5;
-            if (checkedId == R.id.rb_5s) interval = 5;
+            if (checkedId == R.id.rb_1s) interval = 1;
+            else if (checkedId == R.id.rb_2s) interval = 2;
+            else if (checkedId == R.id.rb_5s) interval = 5;
             else if (checkedId == R.id.rb_10s) interval = 10;
             else if (checkedId == R.id.rb_15s) interval = 15;
             
